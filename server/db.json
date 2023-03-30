@@ -3,21 +3,16 @@
     "productId": 0,
     "productName": "voluptate",
     "productOwnerName": "Davenport Mcguire",
-    "Developers": [
-      "Shari Roy",
-      "Kennedy Kirkland",
-      "Janet Dyer",
-      "Dawn Le"
-    ],
+    "developers": ["Shari Roy", "Kennedy Kirkland", "Janet Dyer", "Dawn Le"],
     "scrumMasterName": "Lou Sheppard",
     "startDate": "2018/03/19",
-    "methodology": "Kanban"
+    "methodology": "Agile"
   },
   {
     "productId": 1,
     "productName": "sint",
     "productOwnerName": "Dotson Clay",
-    "Developers": [
+    "developers": [
       "Keisha Schroeder",
       "Helena Stephenson",
       "Kasey Evans",
@@ -25,24 +20,22 @@
     ],
     "scrumMasterName": "Alexandra Sharpe",
     "startDate": "2019/12/11",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 2,
     "productName": "sint",
     "productOwnerName": "Warren Bradshaw",
-    "Developers": [
-      "Witt Morgan"
-    ],
+    "developers": ["Witt Morgan"],
     "scrumMasterName": "Lavonne Morse",
     "startDate": "2016/03/29",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 3,
     "productName": "dolore",
     "productOwnerName": "Connie Arnold",
-    "Developers": [
+    "developers": [
       "Eve Bennett",
       "Nichols Moss",
       "Pickett Richards",
@@ -50,13 +43,13 @@
     ],
     "scrumMasterName": "Sherri Harrington",
     "startDate": "2017/05/09",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 4,
     "productName": "duis",
     "productOwnerName": "Lily Avery",
-    "Developers": [
+    "developers": [
       "Virginia Combs",
       "Flossie Mooney",
       "Carney Dalton",
@@ -71,23 +64,16 @@
     "productId": 5,
     "productName": "ut",
     "productOwnerName": "Tisha Gay",
-    "Developers": [
-      "Valentine Stevenson",
-      "Chrystal Weaver",
-      "Tameka Lawrence"
-    ],
+    "developers": ["Valentine Stevenson", "Chrystal Weaver", "Tameka Lawrence"],
     "scrumMasterName": "Murphy Gray",
     "startDate": "2021/06/18",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 6,
     "productName": "id",
     "productOwnerName": "Ronda Mueller",
-    "Developers": [
-      "Marshall Cline",
-      "Marks Odonnell"
-    ],
+    "developers": ["Marshall Cline", "Marks Odonnell"],
     "scrumMasterName": "Eloise Fitzgerald",
     "startDate": "2015/10/04",
     "methodology": "Agile"
@@ -96,7 +82,7 @@
     "productId": 7,
     "productName": "nostrud",
     "productOwnerName": "Lewis Doyle",
-    "Developers": [
+    "developers": [
       "Carmella Mccoy",
       "Rosetta Workman",
       "Paul Schneider",
@@ -111,33 +97,25 @@
     "productId": 8,
     "productName": "dolor",
     "productOwnerName": "Tracy Roach",
-    "Developers": [
-      "Cecile Valenzuela",
-      "Cecelia Hampton",
-      "Sims Little"
-    ],
+    "developers": ["Cecile Valenzuela", "Cecelia Hampton", "Sims Little"],
     "scrumMasterName": "Rachel Bullock",
     "startDate": "2014/02/01",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 9,
     "productName": "ea",
     "productOwnerName": "Vicki Trevino",
-    "Developers": [
-      "Kaitlin Hernandez",
-      "Wendi Lawson",
-      "Leila Stevens"
-    ],
+    "developers": ["Kaitlin Hernandez", "Wendi Lawson", "Leila Stevens"],
     "scrumMasterName": "Kari Barnett",
     "startDate": "2017/03/14",
-    "methodology": "Kanban"
+    "methodology": "Agile"
   },
   {
     "productId": 10,
     "productName": "elit",
     "productOwnerName": "Wong Quinn",
-    "Developers": [
+    "developers": [
       "Mcconnell Ray",
       "Mclaughlin Vargas",
       "Maddox Ortega",
@@ -145,36 +123,31 @@
     ],
     "scrumMasterName": "Cassandra Acevedo",
     "startDate": "2017/08/25",
-    "methodology": "Kanban"
+    "methodology": "Agile"
   },
   {
     "productId": 11,
     "productName": "nostrud",
     "productOwnerName": "Araceli House",
-    "Developers": [
-      "Frederick Long",
-      "James Schultz"
-    ],
+    "developers": ["Frederick Long", "James Schultz"],
     "scrumMasterName": "Clare Joyner",
     "startDate": "2016/03/08",
-    "methodology": "Kanban"
+    "methodology": "Agile"
   },
   {
     "productId": 12,
     "productName": "do",
     "productOwnerName": "Ellen Knowles",
-    "Developers": [
-      "Nina Briggs"
-    ],
+    "developers": ["Nina Briggs"],
     "scrumMasterName": "Cherry Hardin",
     "startDate": "2017/08/27",
-    "methodology": "Kanban"
+    "methodology": "Agile"
   },
   {
     "productId": 13,
     "productName": "mollit",
     "productOwnerName": "Morrison Herrera",
-    "Developers": [
+    "developers": [
       "Sheree Sampson",
       "Jody James",
       "Lindsey Everett",
@@ -189,7 +162,7 @@
     "productId": 14,
     "productName": "fugiat",
     "productOwnerName": "Dianna Ross",
-    "Developers": [
+    "developers": [
       "Florence Reeves",
       "Giles Bowen",
       "Romero Cameron",
@@ -198,13 +171,13 @@
     ],
     "scrumMasterName": "Mccormick Bowers",
     "startDate": "2014/11/17",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 15,
     "productName": "ipsum",
     "productOwnerName": "Rosario Suarez",
-    "Developers": [
+    "developers": [
       "Fleming Hess",
       "Shawn Wallace",
       "Gwendolyn Morris",
@@ -219,7 +192,7 @@
     "productId": 16,
     "productName": "consectetur",
     "productOwnerName": "Bell Buck",
-    "Developers": [
+    "developers": [
       "Shaffer Powell",
       "Karin Browning",
       "Brewer Griffith",
@@ -234,18 +207,16 @@
     "productId": 17,
     "productName": "duis",
     "productOwnerName": "Antonia Blackburn",
-    "Developers": [
-      "Santos Alexander"
-    ],
+    "developers": ["Santos Alexander"],
     "scrumMasterName": "Blackburn Stuart",
     "startDate": "2020/01/17",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 18,
     "productName": "voluptate",
     "productOwnerName": "Conner Singleton",
-    "Developers": [
+    "developers": [
       "Rosie Gross",
       "Latisha Baldwin",
       "Terri Herman",
@@ -260,7 +231,7 @@
     "productId": 19,
     "productName": "non",
     "productOwnerName": "Wells Lindsay",
-    "Developers": [
+    "developers": [
       "Amber Reyes",
       "Brady Berg",
       "Harriett Warren",
@@ -268,13 +239,13 @@
     ],
     "scrumMasterName": "Irma Houston",
     "startDate": "2018/02/01",
-    "methodology": "Kanban"
+    "methodology": "Agile"
   },
   {
     "productId": 20,
     "productName": "laboris",
     "productOwnerName": "Riggs Barker",
-    "Developers": [
+    "developers": [
       "Tina Cardenas",
       "Emilia Mcconnell",
       "Isabella Warner",
@@ -289,33 +260,25 @@
     "productId": 21,
     "productName": "esse",
     "productOwnerName": "Ebony Odom",
-    "Developers": [
-      "Bender Medina",
-      "Jefferson Osborn"
-    ],
+    "developers": ["Bender Medina", "Jefferson Osborn"],
     "scrumMasterName": "Muriel Poole",
     "startDate": "2020/03/07",
-    "methodology": "Kanban"
+    "methodology": "Agile"
   },
   {
     "productId": 22,
     "productName": "ullamco",
     "productOwnerName": "Rosemarie Hartman",
-    "Developers": [
-      "Harris Malone",
-      "Burks Reed"
-    ],
+    "developers": ["Harris Malone", "Burks Reed"],
     "scrumMasterName": "Linda Munoz",
     "startDate": "2022/06/27",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 23,
     "productName": "minim",
     "productOwnerName": "Hendricks Robbins",
-    "Developers": [
-      "Wendy Vance"
-    ],
+    "developers": ["Wendy Vance"],
     "scrumMasterName": "Watson Turner",
     "startDate": "2022/12/09",
     "methodology": "Agile"
@@ -324,9 +287,7 @@
     "productId": 24,
     "productName": "aute",
     "productOwnerName": "Talley Norman",
-    "Developers": [
-      "Kerr Mendez"
-    ],
+    "developers": ["Kerr Mendez"],
     "scrumMasterName": "Melisa Carey",
     "startDate": "2018/12/28",
     "methodology": "Waterfall"
@@ -335,22 +296,16 @@
     "productId": 25,
     "productName": "Lorem",
     "productOwnerName": "Hope Mason",
-    "Developers": [
-      "Stevenson Guerrero",
-      "Herman Woodward"
-    ],
+    "developers": ["Stevenson Guerrero", "Herman Woodward"],
     "scrumMasterName": "Darcy Black",
     "startDate": "2021/11/10",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 26,
     "productName": "minim",
     "productOwnerName": "Darlene Garrison",
-    "Developers": [
-      "Daisy Taylor",
-      "Hyde Webb"
-    ],
+    "developers": ["Daisy Taylor", "Hyde Webb"],
     "scrumMasterName": "Harrison Kim",
     "startDate": "2021/03/12",
     "methodology": "Agile"
@@ -359,7 +314,7 @@
     "productId": 27,
     "productName": "excepteur",
     "productOwnerName": "Mcdonald Jacobson",
-    "Developers": [
+    "developers": [
       "Peck Thornton",
       "Gail Hart",
       "Mcclure Summers",
@@ -373,11 +328,7 @@
     "productId": 28,
     "productName": "do",
     "productOwnerName": "Brittney Marsh",
-    "Developers": [
-      "Horton Hines",
-      "Cathy Christensen",
-      "Lupe Rowe"
-    ],
+    "developers": ["Horton Hines", "Cathy Christensen", "Lupe Rowe"],
     "scrumMasterName": "Brooks Lucas",
     "startDate": "2019/08/16",
     "methodology": "Agile"
@@ -386,7 +337,7 @@
     "productId": 29,
     "productName": "reprehenderit",
     "productOwnerName": "Garner Decker",
-    "Developers": [
+    "developers": [
       "Aimee Espinoza",
       "Carrie Campbell",
       "Anna Melton",
@@ -395,15 +346,13 @@
     ],
     "scrumMasterName": "Marylou Murphy",
     "startDate": "2017/12/15",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 30,
     "productName": "reprehenderit",
     "productOwnerName": "Maryann Horn",
-    "Developers": [
-      "Leticia Vaughan"
-    ],
+    "developers": ["Leticia Vaughan"],
     "scrumMasterName": "Mcpherson Branch",
     "startDate": "2020/03/05",
     "methodology": "Agile"
@@ -412,35 +361,25 @@
     "productId": 31,
     "productName": "proident",
     "productOwnerName": "Elaine Calhoun",
-    "Developers": [
-      "Concepcion Shields"
-    ],
+    "developers": ["Concepcion Shields"],
     "scrumMasterName": "Millie Bowman",
     "startDate": "2020/07/19",
-    "methodology": "Scrum"
+    "methodology": "Waterfall"
   },
   {
     "productId": 32,
     "productName": "commodo",
     "productOwnerName": "Carly Peck",
-    "Developers": [
-      "Guthrie Solis",
-      "Luisa Lopez",
-      "Levine Petty"
-    ],
+    "developers": ["Guthrie Solis", "Luisa Lopez", "Levine Petty"],
     "scrumMasterName": "Duran Kemp",
     "startDate": "2019/02/26",
-    "methodology": "Kanban"
+    "methodology": "Agile"
   },
   {
     "productId": 33,
     "productName": "sunt",
     "productOwnerName": "Mcfarland Blackwell",
-    "Developers": [
-      "Angeline Moses",
-      "Weaver Humphrey",
-      "Freida Prince"
-    ],
+    "developers": ["Angeline Moses", "Weaver Humphrey", "Freida Prince"],
     "scrumMasterName": "Saundra Ingram",
     "startDate": "2021/08/03",
     "methodology": "Waterfall"
@@ -449,7 +388,7 @@
     "productId": 34,
     "productName": "veniam",
     "productOwnerName": "Charlene Fox",
-    "Developers": [
+    "developers": [
       "Rich Lynn",
       "Chandler Sellers",
       "Trevino Riggs",
@@ -458,6 +397,6 @@
     ],
     "scrumMasterName": "Patty Hester",
     "startDate": "2015/04/19",
-    "methodology": "Kanban"
+    "methodology": "Agile"
   }
 ]
