@@ -1,18 +1,23 @@
 import { IconButton, TableCell, TableRow } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-
 import React from "react";
 
 import { Entry } from "../../server/types";
 
 type Props = {
   deleteCallback: () => void;
+  disabled: boolean;
   editCallback: () => void;
   entry: Entry;
 };
 
-export const ProductRow = ({ deleteCallback, editCallback, entry }: Props) => {
+export const ProductRow = ({
+  deleteCallback,
+  disabled,
+  editCallback,
+  entry,
+}: Props) => {
   return (
     <TableRow key={entry.productId}>
       <TableCell>{entry.productId}</TableCell>
@@ -27,10 +32,10 @@ export const ProductRow = ({ deleteCallback, editCallback, entry }: Props) => {
       <TableCell>{entry.startDate}</TableCell>
       <TableCell>{entry.methodology}</TableCell>
       <TableCell>
-        <IconButton onClick={editCallback}>
+        <IconButton disabled={disabled} onClick={editCallback}>
           <EditIcon />
         </IconButton>
-        <IconButton onClick={deleteCallback}>
+        <IconButton disabled={disabled} onClick={deleteCallback}>
           <DeleteIcon />
         </IconButton>
       </TableCell>

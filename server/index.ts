@@ -16,8 +16,9 @@ const db = dbData.reduce<{ [key: number]: Entry | undefined }>((prev, curr) => {
 }, {});
 
 const freeIds = [Object.keys(db).length];
-
 const getFreeId = () => freeIds.shift() ?? Object.keys(db).length;
+
+app.use(express.json());
 
 //return all
 router.get("/", (req: Request, res: Response) => {
@@ -34,13 +35,19 @@ router.get("/:productId", (req: Request, res: Response) => {
 router.post("/", (req: Request, res: Response) => {
   // assumption from specs that incomplete forms won't be posted, not doing robust typechecks
   const data = req.body;
-  const newProductId = getFreeId();
 
-  db[newProductId] = {
-    productId: newProductId,
-    ...data,
-  };
-  res.sendStatus(200);
+  if (data) {
+    const newProductId = getFreeId();
+
+    db[newProductId] = {
+      ...data,
+      productId: newProductId,
+    };
+    res.sendStatus(200);
+    return;
+  }
+
+  res.sendStatus(500);
 });
 
 // edit specific
@@ -77,8 +84,8 @@ router.put("/:productId", (req: Request, res: Response) => {
   }
 
   db[productId] = {
-    productId,
     ...data,
+    productId,
   };
 
   res.sendStatus(200);
