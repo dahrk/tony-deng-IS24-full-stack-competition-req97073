@@ -56,7 +56,7 @@ On terminal 1 (Run commands from main directory):
 On terminal 2 (Run commands from main directory):
 ```
   cd client
-  rm package.json # There are different proxies depending on local vs docker setup and the based package.json is setup for a Docker proxy
+  rm package.json # There are different proxies depending on local vs docker setup and the base package.json is setup for a Docker proxy
   mv package-local.json package.json
   yarn install # or npm install
   yarn start # or npm run start
