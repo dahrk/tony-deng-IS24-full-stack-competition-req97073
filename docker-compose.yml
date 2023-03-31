@@ -9,7 +9,8 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./server:/app
+      - ./server/:/app/
+      - /app/node_modules
   client:
     build: ./client
     container_name: client
@@ -18,4 +19,6 @@ services:
     links:
       - server
     volumes:
-      - ./client:/app
+      - ./client/:/app/
+      - /app/node_modules
+

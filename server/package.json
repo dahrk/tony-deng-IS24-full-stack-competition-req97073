@@ -22,6 +22,6 @@
     "build": "yarn tsc",
     "start": "node ./build/index.js",
     "build-start": "yarn tsc && node ./build/index.js",
-    "dev": "concurrently \"yarn tsc --watch\" \"nodemon -q build/index.js\""
+    "dev": "concurrently \"yarn tsc --watch\" \"nodemon -q ./build/index.js\""
   }
 }
