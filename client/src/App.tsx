@@ -8,9 +8,10 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  TextField,
 } from "@mui/material";
 import dayjs from "dayjs";
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useMemo, useState } from "react";
 
 import { ProductModal } from "./ProductModal";
 import { ProductRow } from "./ProductRow";
@@ -29,10 +30,12 @@ const defaultProduct: Entry = {
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [appData, setAppData] = useState<Entry[] | undefined>();
+  const [filteredAppData, setFilteredAppData] = useState<Entry[] | undefined>();
   const [modalProduct, setModalProduct] = useState<Entry>({
     ...defaultProduct,
   });
   const [modalState, setModalState] = useState(false);
+  const [dataFilter, setDataFilter] = useState("");
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -43,10 +46,22 @@ function App() {
     setIsLoading(false);
   };
 
-  // initial load of data
+  // initial data loading
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (dataFilter && appData) {
+      setFilteredAppData(
+        appData?.filter((v) =>
+          (v.scrumMasterName + v.developers.join(" "))
+            .toLowerCase()
+            .includes(dataFilter.toLowerCase())
+        )
+      );
+    }
+  }, [appData, dataFilter]);
 
   const modalOpen = () => setModalState(true);
   const modalClose = () => {
@@ -55,7 +70,7 @@ function App() {
   };
 
   const editCallback = (product: Entry) => {
-    setModalProduct({ ...product, developers: product.developers });
+    setModalProduct({ ...product, developers: [...product.developers] });
     modalOpen();
   };
 
@@ -68,7 +83,7 @@ function App() {
   return (
     <>
       <Container>
-        <Grid container flexDirection="column">
+        <Grid container flexDirection="column" width="500px">
           <Grid item>
             <p>The total number of products is {appData?.length ?? 0}</p>
           </Grid>
@@ -81,6 +96,18 @@ function App() {
             >
               <AddIcon /> Add new product
             </Button>
+          </Grid>
+          <Grid item sx={{ display: "block", width: "500px" }}>
+            <TextField
+              id="filter"
+              inputProps={{ sx: { width: "500px" } }}
+              label="Scrum Master or Developer Search"
+              name="productName"
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setDataFilter(e.target.value);
+              }}
+              value={dataFilter}
+            />
           </Grid>
         </Grid>
         <Table>
@@ -98,16 +125,21 @@ function App() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {appData &&
-              appData.map((entry) => (
-                <ProductRow
-                  deleteCallback={() => deleteCallback(entry.productId)}
-                  disabled={isLoading}
-                  editCallback={() => editCallback(entry)}
-                  entry={entry}
-                  key={entry.productId}
-                />
-              ))}
+            {(function () {
+              const dataToUse = dataFilter ? filteredAppData : appData;
+              return (
+                dataToUse &&
+                dataToUse.map((entry) => (
+                  <ProductRow
+                    deleteCallback={() => deleteCallback(entry.productId)}
+                    disabled={isLoading}
+                    editCallback={() => editCallback(entry)}
+                    entry={entry}
+                    key={entry.productId}
+                  />
+                ))
+              );
+            })()}
           </TableBody>
         </Table>
       </Container>
