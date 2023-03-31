@@ -36,15 +36,15 @@ Frontend component
 - Story 4 & 5 are completed together via the `Scrum Master and Developer Search` input box & reactive text display at the top of the page
 - Each api call is followed by a call to fetch all products from the server. This decision was made in favour of consistency with the server as much as possible but can be changed for performance considerations
 
-## Setup instructions
-1. Docker (Run commands from main directory)
+## Setup instructions, either will work
+### 1. Docker setup (Run commands from main directory)
    
 ```
   docker-compose build
   docker-compose up
 ```
 
-2. Local setup with two terminals
+### 2. Local setup with two terminals
 
 On terminal 1 (Run commands from main directory):
 ```
