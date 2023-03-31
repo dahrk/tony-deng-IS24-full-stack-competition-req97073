@@ -13,6 +13,7 @@ type AppHeaderProps = {
   setModalProduct: React.Dispatch<React.SetStateAction<Entry>>;
 };
 
+// Inputs above the main table for interativity and story requirements
 export const AppHeader = ({
   dataFilter,
   displayData,

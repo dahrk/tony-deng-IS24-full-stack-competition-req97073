@@ -1,16 +1,9 @@
-import {
-  Container,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import { Container } from "@mui/material";
 import React, { useEffect, useMemo, useState } from "react";
 
 import { AppHeader } from "./components/AppHeader";
 import { ProductModal } from "./components/ProductModal";
-import { ProductRow } from "./components/ProductRow";
+import { ProductTable } from "./components/ProductTable";
 import { defaultProduct, handleFetchError } from "./utils";
 import { Entry } from "./types";
 
@@ -30,6 +23,7 @@ function App() {
     setModalState(false);
   };
 
+  // fetch all data from endpoint and populate it in memory
   const fetchData = async () => {
     setIsLoading(true);
     const data: Entry[] = await fetch("/api/product", {
@@ -64,11 +58,13 @@ function App() {
     }
   }, [appData, dataFilter]);
 
+  // sets the modalProduct before opening the shared modal
   const editCallback = (product: Entry) => {
     setModalProduct({ ...product, developers: [...product.developers] });
     modalOpen();
   };
 
+  // calls the delete api path
   const deleteCallback = (productId: number) => {
     fetch(`/api/product/${productId}`, { method: "delete" })
       .then((res) => {
@@ -80,6 +76,7 @@ function App() {
       .catch(handleFetchError);
   };
 
+  // memoized version of two local appDatas, original is not modified to reduce extraenous requests
   const displayData = useMemo(
     () => (dataFilter ? filteredAppData : appData),
     [dataFilter, filteredAppData, appData]
@@ -94,33 +91,12 @@ function App() {
         setDataFilter={setDataFilter}
         setModalProduct={setModalProduct}
       />
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Product Number</TableCell>
-            <TableCell>Product Name</TableCell>
-            <TableCell>Scrum Master</TableCell>
-            <TableCell>Product Owner</TableCell>
-            <TableCell>Developer(s)</TableCell>
-            <TableCell>Start Date</TableCell>
-            <TableCell>Methodology</TableCell>
-            {/* Actions */}
-            <TableCell />
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {displayData &&
-            displayData.map((entry) => (
-              <ProductRow
-                deleteCallback={() => deleteCallback(entry.productId)}
-                disabled={isLoading}
-                editCallback={() => editCallback(entry)}
-                entry={entry}
-                key={entry.productId}
-              />
-            ))}
-        </TableBody>
-      </Table>
+      <ProductTable
+        deleteCallback={deleteCallback}
+        displayData={displayData}
+        editCallback={editCallback}
+        isLoading={isLoading}
+      />
       <ProductModal
         fetchData={fetchData}
         onClose={modalClose}

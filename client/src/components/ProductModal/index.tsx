@@ -1,5 +1,6 @@
-import { Box, Button, Grid, Modal, TextField } from "@mui/material";
-import React, { ChangeEvent } from "react";
+import { Box, Button, FormLabel, Grid, Modal, TextField } from "@mui/material";
+import dayjs from "dayjs";
+import React, { ChangeEvent, useState } from "react";
 
 import { ModalDateInput } from "./ModalDateInput";
 import { ModalDynamicDevelopersInput } from "./ModalDynamicDevelopersInput";
@@ -17,11 +18,13 @@ type ProductModalProps = {
 
 export const ProductModal = ({
   fetchData,
-  onClose,
+  onClose: onModalClose,
   open,
   product,
   setProduct,
 }: ProductModalProps) => {
+  const [dateInvalid, setDateInvalid] = useState(false);
+
   const handleBasicChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProduct((prev) => ({
@@ -74,6 +77,11 @@ export const ProductModal = ({
       .catch(handleFetchError);
   };
 
+  const onClose = () => {
+    setDateInvalid(false);
+    onModalClose();
+  };
+
   return (
     <Modal onClose={onClose} open={open}>
       <Box
@@ -92,6 +100,12 @@ export const ProductModal = ({
         <form
           onSubmit={async (e) => {
             e.preventDefault();
+            if (!dayjs(product?.startDate).isValid()) {
+              setDateInvalid(true);
+              return;
+            }
+
+            setDateInvalid(false);
             await (isNew ? createProductRequest() : editProductRequest());
             onClose();
           }}
@@ -103,7 +117,6 @@ export const ProductModal = ({
               label="Product Name"
               value={product?.productName}
             />
-
             <TextField
               {...textFieldProps}
               name="scrumMasterName"
@@ -122,6 +135,11 @@ export const ProductModal = ({
               textFieldProps={textFieldProps}
             />
             <ModalDateInput setValue={setProduct} value={product?.startDate} />
+            {dateInvalid && (
+              <FormLabel sx={{ color: "crimson", m: 2 }}>
+                Please enter a valid date
+              </FormLabel>
+            )}
             <ModalRadioInput
               onChange={handleBasicChange}
               value={product?.methodology}
