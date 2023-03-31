@@ -92,7 +92,7 @@ export const ProductModal = ({
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            await createProduct();
+            (await isNew) ? createProduct() : editProduct();
             onClose();
           }}
         >

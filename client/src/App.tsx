@@ -55,7 +55,8 @@ function App() {
   };
 
   const editCallback = (product: Entry) => {
-    setModalProduct(product);
+    setModalProduct({ ...product, developers: product.developers });
+    modalOpen();
   };
 
   const deleteCallback = (productId: number) => {
