@@ -12,7 +12,7 @@ import { AppHeader } from "./components/AppHeader";
 import { ProductModal } from "./components/ProductModal";
 import { ProductRow } from "./components/ProductRow";
 import { defaultProduct, handleFetchError } from "./utils";
-import { Entry } from "../../server/types";
+import { Entry } from "./types";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);

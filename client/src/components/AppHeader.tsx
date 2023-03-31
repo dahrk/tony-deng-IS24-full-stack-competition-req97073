@@ -3,7 +3,7 @@ import { Button, Grid, TextField } from "@mui/material";
 import React, { ChangeEvent } from "react";
 
 import { defaultProduct } from "../utils";
-import { Entry } from "../../../server/types";
+import { Entry } from "../types";
 
 type AppHeaderProps = {
   dataFilter: string;
@@ -51,6 +51,7 @@ export const AppHeader = ({
               });
               modalOpen();
             }}
+            variant="contained"
           >
             <AddIcon /> Add new product
           </Button>

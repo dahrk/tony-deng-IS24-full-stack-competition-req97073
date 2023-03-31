@@ -2,7 +2,7 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 
-import { Entry } from "../../../../server/types";
+import { Entry } from "../../types";
 
 type ModalDateInputProps = {
   setValue: (value: React.SetStateAction<Entry>) => void;

@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-import { Entry } from "../../server/types";
+import { Entry } from "./types";
 
 export const defaultProduct: Entry = {
   productId: -1,

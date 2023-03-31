@@ -2,10 +2,20 @@ version: '3'
 services:
   server:
     build: ./server
-    command: sh -c "npm install && npm dev"
+    container_name: server
     environment:
       - NODE_ENV=development
       - PORT=3000
     ports:
       - '3000:3000'
-    working_dir: /root/server
+    volumes:
+      - ./server:/app
+  client:
+    build: ./client
+    container_name: client
+    ports:
+      - '3001:3001'
+    links:
+      - server
+    volumes:
+      - ./client:/app

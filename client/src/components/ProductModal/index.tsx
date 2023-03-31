@@ -5,7 +5,7 @@ import { ModalDateInput } from "./ModalDateInput";
 import { ModalDynamicDevelopersInput } from "./ModalDynamicDevelopersInput";
 import { ModalRadioInput } from "./ModalRadioInput";
 import { handleFetchError } from "../../utils";
-import { Entry } from "../../../../server/types";
+import { Entry } from "../../types";
 
 type ProductModalProps = {
   fetchData: () => Promise<void>;

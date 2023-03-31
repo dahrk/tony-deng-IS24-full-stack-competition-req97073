@@ -3,7 +3,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import React from "react";
 
-import { Entry } from "../../../server/types";
+import { Entry } from "../types";
 
 type ProductRowProps = {
   deleteCallback: () => void;

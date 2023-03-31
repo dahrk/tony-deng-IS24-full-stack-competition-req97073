@@ -4,7 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, Button, IconButton, TextField } from "@mui/material";
 import React, { ChangeEvent, ComponentProps } from "react";
 
-import { Entry } from "../../../../server/types";
+import { Entry } from "../../types";
 
 type ModalDynamicDevelopersInputProps = {
   developers: string[];
