@@ -97,12 +97,12 @@ function App() {
               <AddIcon /> Add new product
             </Button>
           </Grid>
-          <Grid item sx={{ display: "block", width: "500px" }}>
+          <Grid item>
             <TextField
               id="filter"
               inputProps={{ sx: { width: "500px" } }}
               label="Scrum Master and Developer Search"
-              name="productName"
+              name="filter"
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setDataFilter(e.target.value);
               }}
