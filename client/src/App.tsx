@@ -1,31 +1,18 @@
-import AddIcon from "@mui/icons-material/Add";
 import {
-  Button,
   Container,
-  Grid,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
-  TextField,
 } from "@mui/material";
-import dayjs from "dayjs";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
-import { ProductModal } from "./ProductModal";
-import { ProductRow } from "./ProductRow";
+import { AppHeader } from "./components/AppHeader";
+import { ProductModal } from "./components/ProductModal";
+import { ProductRow } from "./components/ProductRow";
+import { defaultProduct, handleFetchError } from "./utils";
 import { Entry } from "../../server/types";
-
-const defaultProduct: Entry = {
-  productId: -1,
-  productName: "",
-  productOwnerName: "",
-  developers: [""],
-  scrumMasterName: "",
-  startDate: dayjs(new Date()).format("YYYY/MM/DD"),
-  methodology: "Agile",
-};
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +34,14 @@ function App() {
     setIsLoading(true);
     const data: Entry[] = await fetch("/api/product", {
       method: "GET",
-    }).then((res) => res.json());
+    })
+      .then((res) => {
+        if (!res.ok) {
+          console.error("Response not OK");
+        }
+        return res.json();
+      })
+      .catch(handleFetchError);
     setAppData(data);
     setIsLoading(false);
   };
@@ -57,6 +51,7 @@ function App() {
     fetchData();
   }, []);
 
+  // filter logic
   useEffect(() => {
     if (dataFilter && appData) {
       setFilteredAppData(
@@ -75,40 +70,30 @@ function App() {
   };
 
   const deleteCallback = (productId: number) => {
-    fetch(`/api/product/${productId}`, { method: "delete" }).then(() =>
-      fetchData()
-    );
+    fetch(`/api/product/${productId}`, { method: "delete" })
+      .then((res) => {
+        if (!res.ok) {
+          console.error("Response not ok");
+        }
+        fetchData();
+      })
+      .catch(handleFetchError);
   };
+
+  const displayData = useMemo(
+    () => (dataFilter ? filteredAppData : appData),
+    [dataFilter, filteredAppData, appData]
+  );
 
   return (
     <Container>
-      <Grid container flexDirection="column" width="500px">
-        <Grid item>
-          <p>The total number of products is {appData?.length ?? 0}</p>
-        </Grid>
-        <Grid item>
-          <Button
-            onClick={() => {
-              setModalProduct(defaultProduct);
-              modalOpen();
-            }}
-          >
-            <AddIcon /> Add new product
-          </Button>
-        </Grid>
-        <Grid item>
-          <TextField
-            id="filter"
-            inputProps={{ sx: { width: "500px" } }}
-            label="Scrum Master and Developer Search"
-            name="filter"
-            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              setDataFilter(e.target.value);
-            }}
-            value={dataFilter}
-          />
-        </Grid>
-      </Grid>
+      <AppHeader
+        dataFilter={dataFilter}
+        displayData={displayData}
+        modalOpen={modalOpen}
+        setDataFilter={setDataFilter}
+        setModalProduct={setModalProduct}
+      />
       <Table>
         <TableHead>
           <TableRow>
@@ -124,21 +109,16 @@ function App() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {(function () {
-            const dataToUse = dataFilter ? filteredAppData : appData;
-            return (
-              dataToUse &&
-              dataToUse.map((entry) => (
-                <ProductRow
-                  deleteCallback={() => deleteCallback(entry.productId)}
-                  disabled={isLoading}
-                  editCallback={() => editCallback(entry)}
-                  entry={entry}
-                  key={entry.productId}
-                />
-              ))
-            );
-          })()}
+          {displayData &&
+            displayData.map((entry) => (
+              <ProductRow
+                deleteCallback={() => deleteCallback(entry.productId)}
+                disabled={isLoading}
+                editCallback={() => editCallback(entry)}
+                entry={entry}
+                key={entry.productId}
+              />
+            ))}
         </TableBody>
       </Table>
       <ProductModal

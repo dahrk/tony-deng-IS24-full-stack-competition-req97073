@@ -25,7 +25,7 @@ router.get("/", (req: Request, res: Response) => {
   res.status(200).send(Object.values(db).filter((v) => v !== undefined));
 });
 
-// get specific
+// get specific - not used in assessment
 router.get("/:productId", (req: Request, res: Response) => {
   const productId = parseInt(req.params.productId, 10);
   res.status(200).send(db[productId]);
@@ -43,7 +43,7 @@ router.post("/", (req: Request, res: Response) => {
       ...data,
       productId: newProductId,
     };
-    res.sendStatus(200);
+    res.status(201).send(db[newProductId]);
     return;
   }
 
@@ -66,12 +66,13 @@ router.put("/:productId", (req: Request, res: Response) => {
       freeIds.sort();
     }
   } else {
-    // api functionality not explicitly supported by client but good to have
+    // api functionality not explicitly supported by front-end but wanted to have the coverage
     if (productId < 0) {
       res.sendStatus(400);
       return;
     }
 
+    // padding database with undefined products to maintain product id consistency
     for (
       let fillerId = Object.keys(db).length;
       fillerId < productId - 1;
@@ -88,10 +89,10 @@ router.put("/:productId", (req: Request, res: Response) => {
     productId,
   };
 
-  res.sendStatus(200);
+  res.status(201).send(db[productId]);
 });
 
-// delete specific
+// delete specific product
 router.delete("/:productId", (req: Request, res: Response) => {
   const productId = parseInt(req.params.productId, 10);
 
@@ -128,7 +129,7 @@ const specs = swaggerJSDoc({
       title: "Assessment backend",
       version: "1.0.0",
       description:
-        "This is a simple CRUD API application made with Express and documented with Swagger",
+        "This the the backend for the BC Public Service IMB assessment",
     },
     openapi: "3.0.0",
     servers: [

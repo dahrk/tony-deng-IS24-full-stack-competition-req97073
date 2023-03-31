@@ -3,9 +3,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import React from "react";
 
-import { Entry } from "../../server/types";
+import { Entry } from "../../../server/types";
 
-type Props = {
+type ProductRowProps = {
   deleteCallback: () => void;
   disabled: boolean;
   editCallback: () => void;
@@ -17,7 +17,7 @@ export const ProductRow = ({
   disabled,
   editCallback,
   entry,
-}: Props) => {
+}: ProductRowProps) => {
   return (
     <TableRow key={entry.productId}>
       <TableCell>{entry.productId}</TableCell>
