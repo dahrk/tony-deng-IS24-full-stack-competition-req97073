@@ -4,6 +4,7 @@ import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
 import { Entry } from "./types";
+import { validateData } from "./utils";
 
 const app: Express = express();
 const port = 3000;
@@ -22,19 +23,23 @@ app.use(express.json());
 
 //return all
 router.get("/", (req: Request, res: Response) => {
-  res.status(200).send(Object.values(db).filter((v) => v !== undefined));
+  return res.status(200).send(Object.values(db).filter((v) => v !== undefined));
 });
 
 // get specific - not used in assessment
 router.get("/:productId", (req: Request, res: Response) => {
   const productId = parseInt(req.params.productId, 10);
-  res.status(200).send(db[productId]);
+  return res.status(200).send(db[productId]);
 });
 
 // add one
 router.post("/", (req: Request, res: Response) => {
   // assumption from specs that incomplete forms won't be posted, not doing robust typechecks
   const data = req.body;
+
+  if (!validateData(data)) {
+    return res.status(400).send("Invalid JSON body");
+  }
 
   if (data) {
     const newProductId = getFreeId();
@@ -43,19 +48,21 @@ router.post("/", (req: Request, res: Response) => {
       ...data,
       productId: newProductId,
     };
-    res.status(201).send(db[newProductId]);
-    return;
+    return res.status(201).send(db[newProductId]);
   }
 
-  res.sendStatus(500);
+  return res.sendStatus(500);
 });
 
 // edit specific
 router.put("/:productId", (req: Request, res: Response) => {
   const productId = parseInt(req.params.productId, 10);
 
-  // assumption from specs that incomplete forms won't be posted, not doing robust typechecks
   const data = req.body;
+
+  if (!validateData(data)) {
+    return res.status(400).send("Invalid JSON body");
+  }
 
   if (db.hasOwnProperty(productId)) {
     if (productId in freeIds) {
@@ -68,8 +75,7 @@ router.put("/:productId", (req: Request, res: Response) => {
   } else {
     // api functionality not explicitly supported by front-end but wanted to have the coverage
     if (productId < 0) {
-      res.sendStatus(400);
-      return;
+      return res.sendStatus(400);
     }
 
     // padding database with undefined products to maintain product id consistency
@@ -89,7 +95,7 @@ router.put("/:productId", (req: Request, res: Response) => {
     productId,
   };
 
-  res.status(201).send(db[productId]);
+  return res.status(201).send(db[productId]);
 });
 
 // delete specific product
@@ -97,8 +103,7 @@ router.delete("/:productId", (req: Request, res: Response) => {
   const productId = parseInt(req.params.productId, 10);
 
   if (!db[productId]) {
-    res.sendStatus(200);
-    return;
+    return res.sendStatus(200);
   }
 
   db[productId] = undefined;
@@ -107,15 +112,9 @@ router.delete("/:productId", (req: Request, res: Response) => {
 
   freeIds.push(productId);
   freeIds.sort();
+
+  return;
 });
-
-/*
-
-BONUS - Swagger Documentation
-All API endpoints that created in order to develop the required frontend application functionality should be documented via Swagger.
-
-The Swagger documentation should be consumed by anyone building the product on their local workstation at http://localhost:3000/api/api-docs.
- */
 
 app.use("/api/product", router);
 
