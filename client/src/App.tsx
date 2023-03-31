@@ -101,7 +101,7 @@ function App() {
             <TextField
               id="filter"
               inputProps={{ sx: { width: "500px" } }}
-              label="Scrum Master or Developer Search"
+              label="Scrum Master and Developer Search"
               name="productName"
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setDataFilter(e.target.value);
